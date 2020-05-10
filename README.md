@@ -1,4 +1,4 @@
-https://github.com/dima-kulikov/book-shop/blob/master/build/index.html
+https://dima-kulikov.github.io/book-shop/build/index.html
 
 ![Banner](./banner.png)
 
