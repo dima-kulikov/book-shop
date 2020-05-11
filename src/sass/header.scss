@@ -176,6 +176,7 @@
     li{
       // border: 2px solid red;
       width: 200px;
+      height: 40px;
       text-align: center;
       
     }
@@ -185,7 +186,11 @@
       font-size: 19px;
       font-family: "Segoe UI Symbol";
       color: rgb(91, 91, 91);
-      display: block;
+      display: flex;
+      align-items: center;
+      height: 100%;
+      justify-content: center;
+     
     }
 
     .menu-top__a:hover{
