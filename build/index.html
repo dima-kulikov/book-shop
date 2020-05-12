@@ -9,7 +9,8 @@
     <link rel="stylesheet" type="css" href="/css/styles.css">
     <link rel="stylesheet" type="css" href="css/styles.css">
     <link rel="stylesheet" type="css" href="css/styles.min.css">
-    <script type="text/javascript" src="http://code.jquery.com/jquery-latest.min.js"></script>
+    <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/jquery/2.1.3/jquery.min.js"></script>
+    <script type="text/javascript" src="/js/slider.js"></script>
   </head>
 
   <body>
@@ -69,17 +70,75 @@
 </nav>
 </header>
 <!-- Слайдер на сайт -->
-<div class="slider">
+<div class="section-size">
+<div id="slider" >
+  <a href="#" class="control_next">></a>
+  <a href="#" class="control_prev"><</a>
   <ul>
-  <li><img src="./images/logo/logo-1.png" alt=""></li>
-  <li><img src="./images/logo/logo-1.png" alt=""></li>
-  <li><img src="./images/logo/logo-1.png" alt=""></li>
-  <li><img src="./images/logo/logo-1.png" alt=""></li>
-  <li><img src="./images/logo/logo-1.png" alt=""></li>
-  </ul>
- </div>
- <!-- https://tokar.ua/read/9719 -->
- <script type="text/javascript" src="./js/slider.js"></script>
+    <li><img src="./images/banner/ban-1.jpg" alt="banner-1"></li>
+    <li><img src="./images/banner/ban-2.jpg" alt="banner-2"></li>
+    <li><img src="./images/banner/ban-3.jpg" alt="banner-3"></li>
+  </ul>  
+</div>
 
+<div class="slider_option">
+  <input type="checkbox" id="checkbox">
+  <label for="checkbox">Autoplay Slider</label>
+</div> 
+</div> 
+
+<!-- <script type="text/javascript" src="../js/sсripts.js"></script> -->
+<script>
+  jQuery(document).ready(function ($) {
+
+$('#checkbox').change(function(){
+  setInterval(function () {
+      moveRight();
+  }, 5000);
+});
+
+var slideCount = $('#slider ul li').length;
+var slideWidth = $('#slider ul li').width();
+var slideHeight = $('#slider ul li').height();
+var sliderUlWidth = slideCount * slideWidth;
+
+$('#slider').css({ width: slideWidth, height: slideHeight });
+
+$('#slider ul').css({ width: sliderUlWidth, marginLeft: - slideWidth });
+
+  $('#slider ul li:last-child').prependTo('#slider ul');
+
+  function moveLeft() {
+      $('#slider ul').animate({
+          left: + slideWidth
+      }, 500, function () {
+          $('#slider ul li:last-child').prependTo('#slider ul');
+          $('#slider ul').css('left', '');
+      });
+  };
+
+  function moveRight() {
+      $('#slider ul').animate({
+          left: - slideWidth
+      }, 500, function () {
+          $('#slider ul li:first-child').appendTo('#slider ul');
+          $('#slider ul').css('left', '');
+      });
+  };
+
+  $('a.control_prev').click(function () {
+      moveLeft();
+  });
+
+  $('a.control_next').click(function () {
+      moveRight();
+  });
+
+});    
+
+</script>
+
+<!-- СЛАЙДЕР ВТОРОЙ -->
+<!-- https://codepen.io/Em-An/pen/eEBazz -->
   </body>
 </html>
