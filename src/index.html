@@ -10,6 +10,7 @@
     <link rel="stylesheet" type="css" href="css/styles.css">
     <link rel="stylesheet" type="css" href="css/styles.min.css">
     <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/jquery/2.1.3/jquery.min.js"></script>
+    <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
     <script type="text/javascript" src="/js/slider.js"></script>
   </head>
 
@@ -70,7 +71,7 @@
 </nav>
 </header>
 <!-- Слайдер на сайт -->
-<div class="section-size">
+<section class="section-size slider-box">
 <div id="slider" >
   <a href="#" class="control_next">></a>
   <a href="#" class="control_prev"><</a>
@@ -81,21 +82,16 @@
   </ul>  
 </div>
 
-<div class="slider_option">
-  <input type="checkbox" id="checkbox">
-  <label for="checkbox">Autoplay Slider</label>
-</div> 
-</div> 
 
 <!-- <script type="text/javascript" src="../js/sсripts.js"></script> -->
 <script>
   jQuery(document).ready(function ($) {
 
-$('#checkbox').change(function(){
+
   setInterval(function () {
       moveRight();
   }, 5000);
-});
+
 
 var slideCount = $('#slider ul li').length;
 var slideWidth = $('#slider ul li').width();
@@ -135,10 +131,34 @@ $('#slider ul').css({ width: sliderUlWidth, marginLeft: - slideWidth });
   });
 
 });    
-
 </script>
 
 <!-- СЛАЙДЕР ВТОРОЙ -->
 <!-- https://codepen.io/Em-An/pen/eEBazz -->
+<div class="slider">
+  <ul>
+      <li><img src="./images/banner/ban-4.jpg" alt="banner-4"></li>
+      <li><img src="./images/banner/ban-5.jpg" alt="banner-5"></li>
+      <li><img src="./images/banner/ban-6.jpg" alt="banner-6"></li>
+      <li><img src="./images/banner/ban-7.jpg" alt="banner-7"></li>
+  </ul>
+  <ol>
+      <li class="active"></li>
+      <li></li>
+      <li></li>
+      <li></li>
+  </ol>
+</div>
+<script>
+  $(".slider ol li").on("click", function() {
+    $(this).addClass("active").siblings("li").removeClass("active");
+    $(".slider ul").animate({
+        top: -$(".slider").height() * $(this).index()
+    }, 500);
+});
+
+
+</script>
+</section> 
   </body>
 </html>
